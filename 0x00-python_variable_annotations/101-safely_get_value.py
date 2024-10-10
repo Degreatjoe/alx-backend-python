@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """
-the function annotation
+Function annotation example
 """
-from typing import TypeVar, Mapping, Any, Union
+from typing import TypeVar, Mapping, Any, Optional, Union
+
 T = TypeVar('T')
 
 
 def safely_get_value(dct: Mapping[Any, Any],
                      key: Any,
-                     default: Union[T, None] = None) -> Union[Any, T]:
+                     default: Optional[T] = None) -> Union[Any, T]:
     """
-    the corrected annotated function jjjjjjjjjjjjjjjjjj
-    jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+    A function that safely retrieves a value from a dictionary.
+    If the key is not found, it returns the default value.
     """
     if key in dct:
         return dct[key]
