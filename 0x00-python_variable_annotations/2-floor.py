@@ -2,10 +2,11 @@
 """
 annotated floor: float
 """
+import math
 
 
 def floor(n: float) -> int:
     """
     the annotated floor function
     """
-    return n
+    return math.floor(n)
