@@ -5,7 +5,7 @@ a type annotated function
 
 
 def add(a: float, b: float) -> float:
-  """
-  This function takes two floats as arguments and returns their sum as a float.
-  """
-  return a + b
+    """
+    This function takes two floats as arguments and returns their sum as a float.
+    """
+    return a + b
