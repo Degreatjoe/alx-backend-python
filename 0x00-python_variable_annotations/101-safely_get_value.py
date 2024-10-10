@@ -10,7 +10,8 @@ def safely_get_value(dct: Mapping[Any, Any],
                      key: Any,
                      default: Union[T, None] = None) -> Union[Any, T]:
     """
-    the corrected annotated function
+    the corrected annotated function jjjjjjjjjjjjjjjjjj
+    jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
     """
     if key in dct:
         return dct[key]
