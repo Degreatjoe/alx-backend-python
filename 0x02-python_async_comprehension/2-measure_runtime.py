@@ -1,27 +1,34 @@
 #!/usr/bin/env python3
 """
 This module defines a coroutine that measures the runtime of executing
-async_comprehension four times in parallel.
+async_comprehension four times in parallel and returns the total runtime.
 """
+
 import time
 import asyncio
-async_comprehension = __import__('2-async_comprehension')
+from typing import List
+async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
 async def measure_runtime() -> float:
     """
-    Executes async_comprehension four times in parallel and measures
-    the total runtime.
+    Measures the runtime of executing async_comprehension
+    four times concurrently.
+
+    The function uses asyncio.gather to run async_comprehension
+    four times in parallel.
+    It returns the total runtime as a float in seconds.
 
     Returns:
-        float: The total runtime in seconds.
+        float: The total runtime of the asynchronous operations.
     """
-    start_time = time.time()  # Record start time
+    start_time = time.time()  # Record the start time
 
-    # Execute async_comprehension four times concurrently
+    # Run async_comprehension four times concurrently
     await asyncio.gather(*(async_comprehension() for _ in range(4)))
 
-    end_time = time.time()  # Record end time
+    end_time = time.time()  # Record the end time
 
-    total_runtime = end_time - start_time  # Calculate total runtime
+    # Calculate the total runtime
+    total_runtime = end_time - start_time
     return total_runtime
