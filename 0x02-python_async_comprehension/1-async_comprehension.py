@@ -1,19 +1,27 @@
 #!/usr/bin/env python3
 """
-the module is for asyc oroject
+This module defines a coroutine that measures the runtime of executing
+async_comprehension four times in parallel.
 """
+import time
 import asyncio
-from typing import List
-from random import uniform
+async_comprehension = __import__("async_comprehension").async_comprehension
 
 
-async def async_generator():
-    """Yields random floats asynchronously."""
-    for _ in range(10):
-        await asyncio.sleep(1)
-        yield uniform(0, 10)
+async def measure_runtime() -> float:
+    """
+    Executes async_comprehension four times in parallel and measures
+    the total runtime.
 
+    Returns:
+        float: The total runtime in seconds.
+    """
+    start_time = time.time()  # Record start time
 
-async def async_comprehension() -> List[float]:
-    """Collects 10 random numbers from async_generator and returns them."""
-    return [i async for i in async_generator()]
+    # Execute async_comprehension four times in parallel
+    await asyncio.gather(*(async_comprehension() for _ in range(4)))
+
+    end_time = time.time()  # Record end time
+
+    total_runtime = end_time - start_time  # Calculate total runtime
+    return total_runtime
